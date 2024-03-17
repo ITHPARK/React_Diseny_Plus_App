@@ -1,0 +1,22 @@
+.banner {height: 448px; color: white;  object-fit: contain;}
+
+@media all and (min-width: 1500px) {
+    .banner { position: relative; height: 600px; }
+    .banner_fadeBottom {width: 100%; height: 40rem; position: absolute; bottom: 0; }
+}
+@media all and (max-width: 768px) {
+    .banner_contents { margin-left: 0px !important; padding-left: 2.3rem;  width: min-content !important;}
+    .banner_description {width: auti !important; font-size: 0.8rem !important;}
+    .info{ padding-right: 1.2rem; text-align: start;}
+    .space {margin-left: 6px;}
+    .banner_button {font-size: 0.8rem !important; border-radius: 4px !important;}
+}
+
+.banner_contents {margin-left: 40px; padding-top: 140px; height: 190px; }
+.banner_title {padding-bottom: 0.5rem; font-size: 3rem; font-weight: 800;}
+.banner_description {padding-top: 1rem;  width: 45rem; max-width: 400px; height: 80px; font-size: 1rem;  font-weight: 500; line-height: 1.3;}
+.banner_fadeBottom {height: 7.4rem; background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111);}
+.banner_buttons {display: flex; flex-direction: row;}
+.banner_button {margin-right: 1rem; padding: 0.4rem 1rem; display: flex; justify-content: start; align-items: center; font-size: 1rem; font-weight: 700; cursor: pointer; outline: none; border: none;  ;}
+.banner_button:hover {color: #000; background-color: rgba(170, 170, 170, 0.9); transition: all 0.2s;} 
+.play { color: black; background-color: white;}
