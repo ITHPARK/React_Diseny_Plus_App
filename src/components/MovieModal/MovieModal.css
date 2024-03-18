@@ -1,0 +1,39 @@
+.presentation {position: absolute;z-index: 1200;}
+.wrpper_modal {display:flex;justify-content: center;position: fixed;background-color: rgba(0 ,0 ,0 ,0.71);inset: 0px;}
+.modal_close { position: absolute;  right: 20px;  top: 20px; color: #fff; cursor: pointer; z-index: 1000; }
+
+.modal { max-width: 800px; position: relative; box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0, 0.12); background: #111; overflow: hidden; border-radius: 8px; transition: all 400ms ease-in-out 2s; animation: fadeIn 400ms; }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+.modala::-webkit-scrollbar {display: none;visibility: hidden;}
+.modal_poster_img {width: 100%;height: auto;}
+.modal_content { padding: 40px; color: #fff;}
+.modal_title { margin: 16px 0; padding: 0; font-size: 40px;}
+
+
+@media screen and (max-width: 768px) {
+    .wrpper_modal { padding-top: 2rem; align-items: center;}
+    .modal { overflow-y : scroll; }
+}
+
+@media screen and (max-width: 768px) {
+    .modal_overview { font-size: 16px; }
+    .modal_details {font-size: 16px;}
+    .wrpper_modal { padding: 0; }
+    .modal {overflow-y: scroll;}
+}
+
+
+
+
