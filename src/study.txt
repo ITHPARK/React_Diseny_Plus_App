@@ -130,5 +130,7 @@ function Invoice () {
 }
 
 
+### useDebounce
 
-
+debounce function은 사용자가 미리 결정된 시간 동안 타이핑을 멈출 때 까지 keyup 이벤트 처리를 지연시킴.
+이 함수를 사용함으로써 입력을 할 때 불필요한 호출을 줄일 수 있다.

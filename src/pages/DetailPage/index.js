@@ -1,8 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState, } from 'react';
+import { useParams } from'react-router-dom'
+import axios from "../../api/axios";
+
 
 const DetailPage = () => {
+
+  let {movieId} = useParams(); // => let movieId = useParams().movieId;
+  console.log(movieId);
+
+  const [movie, setMovie] = useState({});
+
+  console.log(1);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axios.get(`movie/${movieId}`);
+      console.log(response);
+      setMovie(response.data);
+    }
+
+    fetchData();
+  }, [movieId])
+
+  if(!movie) return null;
+  
   return (
-    <div>index</div>
+    <section>
+      <img 
+        className='modal_poster_img'
+        src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+        alt="img"
+      />
+    </section>
   )
 }
 

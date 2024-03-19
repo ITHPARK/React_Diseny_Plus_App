@@ -18,18 +18,22 @@ const Layout = () => {
   )
 }
 
-const App = () => {
-  return (  
-    <div className='app'>
+function App() {
+  return (
+   <div className='app'>
       <Routes>
-        <Route path="/" element={<Layout/>}>
-          <Route index element={<LoginPage/>} />
-          <Route path='main' element={<MainPage/>} />
-          <Route path=':movieId' element={<DetailPage/>} />
-          <Route path='search' element={<SearchPage/>} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<LoginPage />} />
+          <Route path="main" element={<MainPage />} />
+
+          {/* path명이 동적으로 들어갈 시 사용 */}
+          <Route path=":movieId" element={<DetailPage />} />
+
+
+          <Route path="search" element={<SearchPage />} />
         </Route>
       </Routes>
-    </div>
+   </div>
   );
 }
 
