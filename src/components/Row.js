@@ -76,7 +76,7 @@ function Row({title, id, fetchUrl}) {
         }}
       >
       {movies.map(movie => (
-        <SwiperSlide>
+        <SwiperSlide key={movie.id}>
           <Wrap>
             <img
               key={movie.id}
