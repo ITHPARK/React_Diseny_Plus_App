@@ -12,7 +12,7 @@ import '../../App.css';
 function MainPage() {
   return (
     <Container>
-    <Nav></Nav>
+    {/* <Nav></Nav> */}
     <Banner></Banner>  
     <Category />
     <Row title="Trending Now" id="TN" fetchUrl={request.fetchTrending}/>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef, }  from 'react'
+import React, { useEffect, useState, useCallback, useRef,  }  from 'react'
 import { useOnClickOutside } from '../../hooks/useOnClickOutside';
 import "./MovieModal.css";
 

@@ -2,13 +2,15 @@ import React, { useEffect, useState, } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from 'firebase/auth';
+import {useDispatch, useSelector}  from'react-redux';
+import { setUser, removeUser } from '../store/userSlice';
 
 function Nav() {
 
     //이미 로그인을 한 기록이 있으면 새로고침해도 userData에 데이터가 남게 처리
-    const initialUserDate = localStorage.getItem('userData') ? 
+    // const initialUserDate = localStorage.getItem('userData') ? 
     //스트링 데이터를 다시 localStorage 객체로 변환
-    JSON.parse(localStorage.getItem('userData')) : {}
+    // JSON.parse(localStorage.getItem('userData')) : {}
     
     //현재 브라우저의 스크롤 값을 구할 state
     const [show, setShow] = useState(false);
@@ -20,7 +22,7 @@ function Nav() {
     const [searchValue, setSearchValue] = useState("");
 
     //구글 로그인 유저 데이터를 담을 state
-    const [userData, setuserData] = useState(initialUserDate);
+    // const [userData, setuserData] = useState(initialUserDate);
 
     //검색창에 검색어를 칠때 결과값에 따라서 경로이동을 해주게 할 함수
     const navigate = useNavigate();
@@ -30,6 +32,10 @@ function Nav() {
 
     //GoogleAuthProvider의 새로운 인스턴스를 생성하고 이를 이용해 로그인 처리 제공자로 사용가능
     const provider = new GoogleAuthProvider();
+
+    const dispatch = useDispatch();
+
+    const userData = useSelector(state => state.user);
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -85,7 +91,16 @@ function Nav() {
 
         //로그인 완료 후 처리
         .then(result => {
-            setuserData(result.user);
+            // setuserData(result.user);
+
+            //로그인 데이터를 store객체에 삽입
+            dispatch(setUser({
+                id: result.user.uid,
+                email: result.user.email,
+                displayName: result.user.displayName,
+                photoURL: result.user.photoURL
+
+            }));
 
             //로컬스토리지에 데이터를 저장
             //JSON.stringify를 이용하여 텍스트롤 변환해준 후 저장을 해주면 된다.
@@ -102,8 +117,9 @@ function Nav() {
         signOut(auth)
         .then(() => {
             //유저 정보를 다시 빈 객체로 변경해주고 루트페이지(로그인 페이지)로 이동
-            setuserData({});
+            // setuserData({});
             navigate("/");
+            dispatch(removeUser());
         })
         .catch(error => {
             //에러처리
